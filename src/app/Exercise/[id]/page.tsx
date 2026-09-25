@@ -47,7 +47,7 @@ const ExerciseDetails = () => {
     );
 
     if (plan.some((item) => item.id === workout.id)) {
-      toast("Already added to today's plan", { icon: "✓" });
+      toast("Already added to today's plan !");
       return;
     }
 
@@ -68,7 +68,7 @@ const ExerciseDetails = () => {
     );
 
     if (saved.some((item) => item.id === workout.id)) {
-      toast("Already saved", { icon: "✓" });
+      toast("Already saved !");
       return;
     }
 
