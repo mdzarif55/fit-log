@@ -4,14 +4,50 @@ import Link from "next/link";
 import Logo from "@/assets/logo.png";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const pathname = usePathname();
+
+  const [planCount, setPlanCount] = useState(0);
+  const [savedCount, setSavedCount] = useState(0);
 
   const isWorkoutsActive = pathname === "/";
   const isMyPlanActive = pathname === "/my-plan";
   const isPlanActive = pathname === "/plan";
   const isSavedActive = pathname === "/saved";
+
+  // Read counts from localStorage
+  const updateCounts = () => {
+    const plan = JSON.parse(
+      localStorage.getItem("fitlog-plan") || "[]"
+    );
+
+    const saved = JSON.parse(
+      localStorage.getItem("fitlog-saved") || "[]"
+    );
+
+    setPlanCount(plan.length);
+    setSavedCount(saved.length);
+  };
+
+  useEffect(() => {
+    // Initial count
+    updateCounts();
+
+    // Update when workout is added/saved
+    window.addEventListener(
+      "fitlog-storage",
+      updateCounts
+    );
+
+    return () => {
+      window.removeEventListener(
+        "fitlog-storage",
+        updateCounts
+      );
+    };
+  }, []);
 
   return (
     <nav className="h-[76px] border-b border-[#202228] bg-[#0b0c0f] px-5 md:px-8">
@@ -52,6 +88,7 @@ const Navbar = () => {
           >
             My Plan
           </Link>
+
         </div>
 
         {/* Right Side */}
@@ -59,7 +96,7 @@ const Navbar = () => {
 
           {/* Plan */}
           <Link
-            href="/plan"
+            href="/my-plan"
             className={`flex items-center gap-2 transition ${
               isPlanActive
                 ? "text-white"
@@ -69,13 +106,13 @@ const Navbar = () => {
             <span>Plan</span>
 
             <span className="flex h-[20px] min-w-[20px] items-center justify-center rounded-full bg-[#b6ff00] px-1 text-[11px] font-bold text-black">
-              0
+              {planCount}
             </span>
           </Link>
 
           {/* Saved */}
           <Link
-            href="/saved"
+            href="/my-plan"
             className={`flex items-center gap-2 transition ${
               isSavedActive
                 ? "text-white"
@@ -85,7 +122,7 @@ const Navbar = () => {
             <span>Saved</span>
 
             <span className="flex h-[20px] min-w-[20px] items-center justify-center rounded-full border border-[#30333b] px-1 text-[11px] text-[#a5a7ae]">
-              0
+              {savedCount}
             </span>
           </Link>
 

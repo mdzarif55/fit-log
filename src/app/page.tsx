@@ -1,5 +1,5 @@
 import Banner from "@/components/Banner";
-import Exercise from "@/app/Exercise/Exercise";
+import Exercise from "@/components/Exercise";
 import Image from "next/image";
 
 export default function Home() {
