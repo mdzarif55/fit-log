@@ -68,7 +68,7 @@ const Navbar = () => {
           {/* Workouts */}
           <Link
             href="/"
-            className={`rounded-full px-5 py-2 text-[12px] font-bold transition ${
+            className={`rounded-full px-5 py-2 text-[14px] font-bold transition ${
               isWorkoutsActive
                 ? "bg-[#17220d] text-[#b6ff00]"
                 : "text-[#9b9da5] hover:text-white"
@@ -80,7 +80,7 @@ const Navbar = () => {
           {/* My Plan */}
           <Link
             href="/my-plan"
-            className={`rounded-full px-5 py-2 text-[12px] font-bold transition ${
+            className={`rounded-full px-5 py-2 text-[14px] font-bold transition ${
               isMyPlanActive
                 ? "bg-[#17220d] text-[#b6ff00]"
                 : "text-[#9b9da5] hover:text-white"
@@ -92,7 +92,7 @@ const Navbar = () => {
         </div>
 
         {/* Right Side */}
-        <div className="flex items-center gap-5 text-[12px]">
+        <div className="flex items-center gap-5 text-[14px]">
 
           {/* Plan */}
           <Link

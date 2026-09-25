@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Workout } from "@/types/workout";
+import type { Workout } from "@/app/types/workout";
 
 const Exercise = async () => {
   const res = await fetch("https://api.abcz.workers.dev/api/fitlog", {
