@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import toast from "react-hot-toast";
 import type { Workout } from "@/app/types/workout";
 
 const MyPlan = () => {
@@ -75,25 +76,26 @@ const MyPlan = () => {
       const updatedPlan = plan.filter((workout) => workout.id !== id);
 
       setPlan(updatedPlan);
-      localStorage.setItem(
-        "fitlog-plan",
-        JSON.stringify(updatedPlan)
-      );
+      localStorage.setItem("fitlog-plan", JSON.stringify(updatedPlan));
+
+      toast.success("Removed from today's plan");
     } else {
       const updatedSaved = saved.filter((workout) => workout.id !== id);
 
       setSaved(updatedSaved);
-      localStorage.setItem(
-        "fitlog-saved",
-        JSON.stringify(updatedSaved)
-      );
+      localStorage.setItem("fitlog-saved", JSON.stringify(updatedSaved));
+
+      toast.success("Removed from saved");
     }
 
     window.dispatchEvent(new Event("fitlog-storage"));
   };
 
   const markAsDone = (id: number) => {
-    if (completed.includes(id)) return;
+    if (completed.includes(id)) {
+      toast("Workout already completed", { icon: "✓" });
+      return;
+    }
 
     const updatedCompleted = [...completed, id];
 
@@ -103,6 +105,8 @@ const MyPlan = () => {
       "fitlog-completed",
       JSON.stringify(updatedCompleted)
     );
+
+    toast.success("Workout marked as done");
   };
 
   return (
