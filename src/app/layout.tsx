@@ -10,6 +10,7 @@ const oswald = Oswald({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
+
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -27,30 +28,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${oswald.variable} ${inter.variable}`}
->
-      <body
-        className={"font-oswald min-h-full bg-[#0b0c0f] flex flex-col antialiased"}
-      >
+    <html
+      lang="en"
+      data-theme="dark"
+      className={`${oswald.variable} ${inter.variable} bg-[#0b0c0f]`}
+    >
+      <body className="flex min-h-screen flex-col bg-[#0b0c0f] font-oswald text-white antialiased">
         <Navbar />
 
-        <main className="flex-1">
+        <main className="flex-1 bg-[#0b0c0f]">
           {children}
         </main>
 
         <Footer />
-         <Toaster
-          position="top-right"
-          // toastOptions={{
-          //   duration: 2000,
-          //   style: {
-          //     background: "#15171c",
-          //     color: "#ffffff",
-          //     border: "1px solid #30333b",
-          //     fontSize: "12px",
-          //   },
-          // }}
-        />
+
+        <Toaster position="top-right" />
       </body>
     </html>
   );

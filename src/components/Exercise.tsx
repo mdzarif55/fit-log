@@ -16,7 +16,7 @@ const Exercise = async () => {
   const workouts: Workout[] = await res.json();
 
   return (
-    <section className="px-5 py-10 md:px-8">
+    <section id="exercise" className="px-5 py-10 md:px-8">
       <div className="mx-auto max-w-[1400px]">
 
         {/* Header */}
