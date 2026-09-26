@@ -50,7 +50,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="h-[76px] border-b border-[#202228] bg-[#0b0c0f] px-5 md:px-8 sticky top-0 z-50">
+    <nav className="h-[76px] border-b border-[#202228] bg-[#0b0c0f]/90 px-5 md:px-8 sticky top-0 z-50 ">
       <div className="mx-auto flex h-full max-w-[1400px] items-center justify-between">
 
         {/* Logo */}
