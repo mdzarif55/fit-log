@@ -70,7 +70,7 @@ const Exercise = async () => {
                 </h3>
 
                 {/* Equipment */}
-                <p className="mt-1 text-[9px] text-[#777b85]">
+                <p className="mt-1 text-[12px] text-[#777b85]">
                   {workout.equipment}
                 </p>
 
@@ -78,7 +78,7 @@ const Exercise = async () => {
                 <div className="my-3 border-t border-[#252830]" />
 
                 {/* Stats */}
-                <div className="flex items-center gap-3 text-[9px] text-[#858993]">
+                <div className="flex items-center gap-3 text-[10px] text-[#858993]">
                   <span>◷ {workout.duration} min</span>
                   <span>♥ {workout.caloriesBurned} kcal</span>
                   <span>★ {workout.rating}</span>
