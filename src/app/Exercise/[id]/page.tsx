@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import type { Workout } from "@/app/types/workout";
+import calendar from '@/assets/calendar.png'
 
 const ExerciseDetails = () => {
   const params = useParams();
@@ -165,11 +166,10 @@ const ExerciseDetails = () => {
               ].map(([label, value], index, array) => (
                 <div
                   key={label}
-                  className={`flex items-center justify-between px-5 py-3.5 ${
-                    index !== array.length - 1
+                  className={`flex items-center justify-between px-5 py-3.5 ${index !== array.length - 1
                       ? "border-b border-[#252830]"
                       : ""
-                  }`}
+                    }`}
                 >
                   <span className="text-[9px] font-bold uppercase tracking-wide text-[#858993]">
                     {label}
@@ -194,7 +194,7 @@ const ExerciseDetails = () => {
                       {index + 1}.
                     </span>
 
-                    <p className="text-[11px] leading-5 text-[#9a9da5]">
+                    <p className="text-[12px] leading-5 text-[#9a9da5]">
                       {instruction}
                     </p>
                   </div>
@@ -205,16 +205,19 @@ const ExerciseDetails = () => {
             <div className="mt-7 flex flex-wrap gap-3">
               <button
                 onClick={handleAddToPlan}
-                className="flex items-center gap-2 rounded-md bg-[#b6ff00] px-5 py-3 text-[11px] font-bold text-black transition hover:bg-[#c8ff33]"
+                className="flex items-center gap-2 rounded-md bg-[#b6ff00] px-5 py-3 text-[13px] font-bold text-black transition hover:bg-[#c8ff33]"
               >
+                <Image src={calendar} alt="cal"
+                  width={16}
+                  height={16} />
                 Add to today's plan
               </button>
 
               <button
                 onClick={handleSave}
-                className="flex items-center gap-2 rounded-md border border-[#30343d] px-5 py-3 text-[11px] font-bold text-[#d0d2d8] transition hover:border-[#777b85] hover:text-white"
+                className="flex items-center gap-2 rounded-md border border-[#30343d] px-5 py-3 text-[13px] font-bold text-[#d0d2d8] transition hover:border-[#777b85] hover:text-white"
               >
-                Save for later
+               🔖 Save for later
               </button>
             </div>
           </div>
